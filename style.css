@@ -192,17 +192,6 @@ body::before {
       box-shadow: 8px 8px 5px rgba(0, 0, 0, 0.2);
 }
 
-@media (max-width: 768px) {
-.prelude { 
- left: 535px;
-top: 460px;
-
-}
-
-
-}
-
-
 
 .intent {
   background-color: rgba(62, 80, 133, .8);
@@ -812,3 +801,132 @@ padding: 50px;
     }
 
  
+/* =========================================
+   MOBILE VERSION
+   ========================================= */
+
+@media (max-width: 768px) {
+
+  /* Prevent the desktop min-width from forcing
+     the phone to be 500px wide */
+  body {
+    min-width: 0;
+    width: 100%;
+    overflow-x: hidden;
+  }
+
+
+  /* =========================
+     HEADER
+     ========================= */
+
+  .head {
+    height: 75px;
+    grid-template-columns: 1fr 100px 1fr;
+  }
+
+  .nav-left,
+  .nav-right {
+    gap: 5px;
+    justify-content: space-around;
+  }
+
+  .link {
+    font-size: 15px;
+    padding: 8px 4px;
+    margin-bottom: 0;
+  }
+
+  .link::after {
+    bottom: 0;
+  }
+
+  .logo-container {
+    width: 100px;
+    height: 85px;
+    border-radius: 0 0 12px 12px;
+  }
+
+  .logo {
+    width: 85px;
+  }
+
+  /* Disable the huge desktop hover effect on mobile */
+  .logo-link:hover .logo-container {
+    transform: none;
+  }
+
+  .logo-link:hover .logo {
+    transform: none;
+  }
+
+
+  /* =========================
+     GENERAL TEXT
+     ========================= */
+
+  .desc {
+    font-size: 25px;
+    width: 95%;
+    margin: 100px auto 20px;
+  }
+
+
+  /* =========================
+     PRELUDE / INTENT
+     ========================= */
+
+  .prelude,
+  .intent {
+    position: relative;
+    left: auto;
+    top: auto;
+
+    width: calc(100% - 30px);
+
+    margin: 25px auto;
+
+    box-sizing: border-box;
+
+    font-size: 17px;
+    line-height: 1.5;
+  }
+
+
+  /* =========================
+     POSTER
+     ========================= */
+
+  .posterfull {
+    width: 100%;
+  }
+
+  .poster {
+    width: 90%;
+    max-width: 500px;
+
+    margin: 40px auto;
+
+    display: block;
+  }
+
+  .poster:hover {
+    transform: none;
+  }
+
+
+  /* =========================
+     JAVASCRIPT EXPLANATION
+     ========================= */
+
+  .jexplanation {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .manualjlogo {
+    width: 60%;
+    max-width: 250px;
+    margin: 20px auto;
+  }

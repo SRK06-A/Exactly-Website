@@ -16,7 +16,10 @@ body::before {
     );
 }
 
-    
+    body {
+    min-width: 1200px;
+}
+
 .head {
   position: fixed;
   top: 0;

@@ -191,6 +191,19 @@ body::before {
       border-color:white;
       box-shadow: 8px 8px 5px rgba(0, 0, 0, 0.2);
 }
+
+@media (max-width: 768px) {
+.prelude { 
+ left: 535px;
+top: 460px;
+
+}
+
+
+}
+
+
+
 .intent {
   background-color: rgba(62, 80, 133, .8);
   font-size: 24px;

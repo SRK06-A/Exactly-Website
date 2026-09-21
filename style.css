@@ -806,6 +806,18 @@ body::before {
 a[href^="tel:"] {
   color: white !important;
   text-decoration: inherit;
+    z-index: 1;
+
+  font-family: "Noto Sans", sans-serif;
+
+  text-align: center;
+
+  font-size: clamp(18px, 2.5vw, 30px);
+
+  text-decoration: underline;
+  
+  margin: 0;
+  padding: 10px;
 }
 
 

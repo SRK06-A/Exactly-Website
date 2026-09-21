@@ -803,6 +803,11 @@ body::before {
   padding: 10px;
 }
 
+a[href^="tel:"] {
+  color: white !important;
+  text-decoration: inherit;
+}
+
 
 @media (max-width: 800px) {
 

@@ -402,7 +402,7 @@ body::before {
 
   .poster {
     width: 100%;
-    max-width: 400px;
+    max-width: 300px;
 
     margin: 15px auto;
   }

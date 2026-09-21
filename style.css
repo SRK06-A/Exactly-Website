@@ -632,11 +632,9 @@ body::before {
 .ruleofthumb,
 .biggernot {
   display: block;
-
   width: clamp(150px, 25vw, 300px);
   height: auto;
   max-width: 100%;
-
   opacity: 0;
 }
 
@@ -649,7 +647,6 @@ body::before {
   animation: appear3D 0.9s ease-out forwards;
   animation-delay: 0.3s;
 }
-
 
 @keyframes appear3D {
   from {

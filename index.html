@@ -124,9 +124,9 @@
 
   <div class="bottomhead">
 
-    <p class="contacts">&#x1F582;exactly.loadcalc@gmail.com</p>
-    <p class="contacts">&#x1F57E;(251) 236-1810</p>
-    <p class="contacts">&#x26B2;Flomaton, AL 36441</p>
+    <p class="contacts">exactly.loadcalc@gmail.com</p>
+    <p class="contacts">(251) 236 1810</p>
+    <p class="contacts">Flomaton, AL 36441</p>
 
       </div>
 
@@ -143,6 +143,63 @@
     <div class="line"></div>
   </div>
     
+  <script>
+document.addEventListener("DOMContentLoaded", () => {
+
+  const importantly = document.querySelector(".importantlydiv");
+  const whatNotToDo = document.querySelector(".whatnottodo");
+
+  if (!importantly || !whatNotToDo) return;
+
+  /*
+    Mobile / tablet:
+    Show the images when the importantly section
+    becomes visible while scrolling.
+  */
+  const mobileObserver = new IntersectionObserver(
+    (entries, observer) => {
+
+      entries.forEach(entry => {
+
+        if (entry.isIntersecting) {
+          whatNotToDo.classList.add("show");
+
+          // Stop observing after it appears
+          observer.unobserve(entry.target);
+        }
+
+      });
+
+    },
+    {
+      threshold: 0.35
+    }
+  );
+
+
+  /*
+    Detect touch/mobile devices.
+  */
+  const isMobile = window.matchMedia("(max-width: 600px)").matches;
+
+
+  if (isMobile) {
+
+    // Mobile: reveal on scroll
+    mobileObserver.observe(importantly);
+
+  } else {
+
+    // Desktop: retain click behavior
+    importantly.addEventListener("click", () => {
+      whatNotToDo.classList.toggle("show");
+    });
+
+  }
+
+});
+</script>
+
   </body>
 
 </html>

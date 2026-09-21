@@ -359,19 +359,59 @@ body::before {
 
 
 
-.posterfull{
+.posterfull {
+  width: 100%;
+  box-sizing: border-box;
   text-align: center;
+  padding: 20px 15px;
 }
 
-    .poster {
-      width:500px;
-      margin: 70px 50px 70px 50px;
-      transition: transform .35s ease;
-    }
+.poster {
+  display: block;
 
-    .poster:hover {
-      transform: scale(1.2, 1.2);
-    }
+  width: min(100%, 500px);
+  height: auto;
+
+  margin: 30px auto;
+
+  transition: transform 0.35s ease;
+}
+
+.poster:hover {
+  transform: scale(1.08);
+}
+
+@media (max-width: 800px) {
+
+  .posterfull {
+    padding: 15px 10px;
+  }
+
+  .poster {
+    width: min(90vw, 450px);
+    margin: 20px auto;
+  }
+
+}
+
+@media (max-width: 600px) {
+
+  .posterfull {
+    padding: 10px;
+  }
+
+  .poster {
+    width: 100%;
+    max-width: 400px;
+
+    margin: 15px auto;
+  }
+
+  .poster:hover {
+    transform: scale(1.02);
+  }
+
+}
 
 .jexplanation {
   display: flex;

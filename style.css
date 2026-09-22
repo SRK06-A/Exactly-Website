@@ -857,48 +857,215 @@ a[href^="tel:"] {
 
     /* below this is for the about page*/
 
-    .itsme {
-      width: 400px;
-      position:absolute;
-      right: 110px;
-      top: 130px;
-      display: inline-block;
-      border: 6px solid rgba(255, 255, 255, 1);
-      box-shadow: 8px 8px 5px rgba(0, 0, 0, 0.2);
-    }
-
-    .whyexactlyme {
-  display: inline-block;
-  padding: 150px;
+* {
+  box-sizing: border-box;
 }
 
-    .mascription {
-  display: inline-block;
-  position: absolute;
-  left: 50px;
-  top: 250px;
+html {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+body {
+  margin: 0;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+.otherbody {
+  margin-top: 250px;
+  min-height: 100vh;
+}
+
+.whyexactlyme {
+  width: 100%;
+  padding: 50px 5%;
+}
+
+.about-content {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 50px;
+}
+
+.mascription {
+  width: 60%;
+  max-width: 850px;
+
+  margin: 0;
+  padding: 40px;
+
   line-height: 1.6;
   text-align: center;
-  width: 66%;
-  font-size: 40px;
-  text-indent: 40px;
-   font-family: "Noto Sans", sans-serif;
-    color:white;
-   background-color: rgba(62, 80, 133, 1);
-   border: 2px;
-  border-style: solid;
-   border-radius:8px;
-      border-color:white;
-      box-shadow: 8px 8px 5px rgba(0, 0, 0, 0.2);
+
+  font-size: clamp(20px, 3vw, 40px);
+  font-family: "Noto Sans", sans-serif;
+
+  color: white;
+  background-color: rgba(62, 80, 133, 1);
+
+  border: 2px solid white;
+  border-radius: 8px;
+
+  box-shadow: 8px 8px 5px rgba(0, 0, 0, 0.2);
+}
+
+.itsme {
+  width: min(400px, 35%);
+  height: auto;
+
+  display: block;
+
+  border: 6px solid white;
+
+  box-shadow: 8px 8px 5px rgba(0, 0, 0, 0.2);
+}
+
+
+.whyexactly-image-section {
+  width: 100%;
+  padding: 40px 5%;
 }
 
 .whyexactlyphoto {
-  width: 600px;
-  margin: 100px 20px 10px 20px;
+  width: min(600px, 90%);
+  height: auto;
+
   display: block;
-    margin-left: auto;
-  margin-right: auto;
+  margin: 0 auto;
 }
+
+.whyexactly {
+  width: 100%;
+  max-width: 1100px;
+
+  margin: 40px auto;
+  padding: 0 5%;
+}
+
+.whyexactlytext {
+  width: 100%;
+
+  margin: 30px 0;
+  padding: 30px;
+
+  line-height: 1.6;
+  text-align: center;
+
+  font-size: clamp(18px, 2.5vw, 30px);
+  font-family: "Noto Sans", sans-serif;
+
+  color: white;
+  background-color: rgba(62, 80, 133, 1);
+
+  border: 2px solid white;
+  border-radius: 8px;
+
+  box-shadow: 8px 8px 5px rgba(0, 0, 0, 0.2);
+}
+
+
+@media (max-width: 900px) {
+
+  .otherbody {
+    margin-top: 180px;
+  }
+
+  .about-content {
+    gap: 30px;
+  }
+
+  .mascription {
+    width: 60%;
+    padding: 30px;
+  }
+
+  .itsme {
+    width: 35%;
+  }
+
+}
+
+
+@media (max-width: 650px) {
+
+  .otherbody {
+    margin-top: 120px;
+  }
+
+  .whyexactlyme {
+    padding: 30px 15px;
+  }
+
+
+  .about-content {
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .mascription {
+    width: 100%;
+    padding: 25px 20px;
+
+    font-size: 20px;
+    line-height: 1.5;
+  }
+
+  .itsme {
+    width: min(400px, 100%);
+  }
+
+
+  .whyexactly-image-section {
+    padding: 30px 15px;
+  }
+
+  .whyexactlyphoto {
+    width: 100%;
+  }
+
+
+  .whyexactly {
+    padding: 0 15px;
+    margin: 30px auto;
+  }
+
+  .whyexactlytext {
+    padding: 20px 15px;
+
+    font-size: 19px;
+    line-height: 1.5;
+
+    margin: 25px 0;
+  }
+
+}
+
+
+@media (max-width: 400px) {
+
+  .otherbody {
+    margin-top: 100px;
+  }
+
+  .mascription {
+    padding: 20px 15px;
+    font-size: 18px;
+  }
+
+  .whyexactlytext {
+    font-size: 17px;
+    padding: 18px 12px;
+  }
+
+}
+```
+
  /* below this is for the pricing page*/
 
  .calculate {

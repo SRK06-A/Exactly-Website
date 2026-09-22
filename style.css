@@ -2572,3 +2572,306 @@ padding:
 }
 }
 
+/* =========================================
+   CONTACT PAGE
+   Responsive / all-device version
+   ========================================= */
+
+.contactexactly {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+
+  width: 100%;
+  max-width: 1400px;
+
+  margin: 0 auto;
+  padding: 30px 5%;
+
+  gap: 25px;
+
+  box-sizing: border-box;
+}
+
+
+.contactexactlytext {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  min-width: 0;
+
+  box-sizing: border-box;
+
+  padding: 25px 20px;
+
+  font-size: clamp(20px, 3vw, 38px);
+  line-height: 1.3;
+
+  text-indent: 0;
+
+  font-family: Georgia, serif;
+
+  color: white;
+
+  background-color: rgba(62, 80, 133, 1);
+
+  border: 2px solid white;
+  border-radius: 8px;
+
+  text-align: center;
+
+  box-shadow:
+    0 8px 5px rgba(0, 0, 0, 0.2);
+
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+
+  transition:
+    padding 0.25s ease,
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+
+/* Desktop hover effect
+   Uses transform instead of huge padding so
+   the grid does not get pushed out of position. */
+
+.contactexactlytext:hover {
+  padding: 25px 20px;
+
+  transform: translateY(-5px);
+
+  box-shadow:
+    0 12px 12px rgba(0, 0, 0, 0.25);
+}
+
+
+.contacttoday {
+  display: block;
+
+  width: min(500px, 90%);
+
+  height: auto;
+
+  margin: 30px auto;
+
+  box-sizing: border-box;
+}
+
+
+.blogo {
+  display: block;
+
+  width: min(750px, 90%);
+
+  height: auto;
+
+  padding: 40px;
+
+  margin: 30px auto;
+
+  box-sizing: border-box;
+}
+
+
+/* =========================================
+   TABLETS
+   ========================================= */
+
+@media (max-width: 900px) {
+
+  .contactexactly {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    gap: 20px;
+
+    padding:
+      25px
+      4%;
+  }
+
+
+  .contactexactlytext {
+    padding: 22px 18px;
+
+    font-size: clamp(20px, 4vw, 32px);
+  }
+
+
+  .contacttoday {
+    width: min(450px, 90%);
+  }
+
+
+  .blogo {
+    width: min(600px, 90%);
+
+    padding: 30px;
+  }
+
+}
+
+
+/* =========================================
+   PHONES
+   ========================================= */
+
+@media (max-width: 600px) {
+
+  .contactexactly {
+    grid-template-columns: 1fr;
+
+    width: 100%;
+
+    gap: 18px;
+
+    padding:
+      20px
+      15px;
+  }
+
+
+  .contactexactlytext {
+    width: 100%;
+
+    min-height: 70px;
+
+    padding:
+      18px
+      15px;
+
+    font-size: clamp(19px, 6vw, 28px);
+
+    line-height: 1.3;
+  }
+
+
+  /* Disable the desktop-style expansion on touch devices. */
+
+  .contactexactlytext:hover {
+    padding:
+      18px
+      15px;
+
+    transform: none;
+
+    box-shadow:
+      0 8px 5px rgba(0, 0, 0, 0.2);
+  }
+
+
+  .contacttoday {
+    width: calc(100% - 30px);
+
+    max-width: 450px;
+
+    margin:
+      25px
+      auto;
+  }
+
+
+  .blogo {
+    width: calc(100% - 30px);
+
+    max-width: 500px;
+
+    padding: 15px;
+
+    margin:
+      20px
+      auto;
+  }
+
+}
+
+
+/* =========================================
+   SMALL PHONES
+   ========================================= */
+
+@media (max-width: 400px) {
+
+  .contactexactly {
+    padding:
+      15px
+      10px;
+
+    gap: 15px;
+  }
+
+
+  .contactexactlytext {
+    min-height: 60px;
+
+    padding:
+      15px
+      12px;
+
+    font-size: 18px;
+  }
+
+
+  .contactexactlytext:hover {
+    padding:
+      15px
+      12px;
+
+    transform: none;
+  }
+
+
+  .contacttoday {
+    width: calc(100% - 20px);
+
+    margin:
+      20px
+      auto;
+  }
+
+
+  .blogo {
+    width: calc(100% - 20px);
+
+    padding: 5px;
+
+    margin:
+      15px
+      auto;
+  }
+
+}
+
+
+/* =========================================
+   TOUCH DEVICES
+   Prevent hover effects from causing layout
+   changes on phones/tablets.
+   ========================================= */
+
+@media (hover: none) {
+
+  .contactexactlytext:hover {
+    padding: 25px 20px;
+    transform: none;
+
+    box-shadow:
+      0 8px 5px rgba(0, 0, 0, 0.2);
+  }
+
+}
+
+
+@media (max-width: 600px) and (hover: none) {
+
+  .contactexactlytext:hover {
+    padding:
+      18px
+      15px;
+
+    transform: none;
+  }
+
+}

@@ -17,7 +17,7 @@ body::before {
 }
 
 .head {
-  position: sticky;
+  position: fixed;
 
   top: 0;
   left: 0;
@@ -28,25 +28,17 @@ body::before {
   height: auto;
 
   display: grid;
-
-  grid-template-columns:
-    1fr
-    minmax(150px, 250px)
-    1fr;
-
+  grid-template-columns: 1fr minmax(150px, 250px) 1fr;
   align-items: center;
 
-  background:
-    rgba(255, 255, 255, 0.95);
+  background: rgba(255, 255, 255, 0.95);
 
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
 
-  border-bottom:
-    1px solid rgba(62, 80, 133, 0.2);
+  border-bottom: 1px solid rgba(62, 80, 133, 0.2);
 
-  box-shadow:
-    0 4px 18px rgba(0, 0, 0, 0.10);
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.10);
 
   z-index: 1000;
 }
@@ -56,7 +48,6 @@ body::before {
   height: 100%;
 
   display: flex;
-
   align-items: center;
   justify-content: space-evenly;
 
@@ -74,86 +65,64 @@ body::before {
   text-decoration: none;
 
   position: relative;
-
   z-index: 5;
 }
 
-
 .logo-container {
   width: min(250px, 80vw);
-
   height: 145px;
 
   display: flex;
-
   justify-content: center;
   align-items: flex-start;
 
   background: white;
 
-  border-radius:
-    0 0 20px 20px;
+  border-radius: 0 0 20px 20px;
 
-  box-shadow:
-    0 6px 18px rgba(0, 0, 0, 0.16);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.16);
 
   transition:
     transform 0.3s ease,
     box-shadow 0.3s ease;
 }
 
-
 .logo {
   width: min(200px, 75%);
-
   height: auto;
 
   display: block;
 }
 
-
 .logo-link:hover .logo-container {
-  transform:
-    scale(1.5)
-    translateY(20px);
+  transform: scale(1.5) translateY(20px);
 
   box-shadow:
     0 9px 22px rgba(0, 0, 0, 0.22);
 }
 
-
 .logo-link:hover .logo {
-  transform:
-    scale(1.1)
-    translateY(0);
+  transform: scale(1.1) translateY(0);
 }
 
 .link {
   position: relative;
 
   color: #333;
-
   text-decoration: none;
 
-  font-family:
-    "Noto Sans",
-    sans-serif;
+  font-family: "Noto Sans", sans-serif;
 
-  font-size:
-    clamp(1.1rem, 2.5vw, 2.5rem);
-
+  font-size: clamp(1.1rem, 2.5vw, 2.5rem);
   font-weight: 300;
 
-  padding:
-    12px 10px;
-
+  padding: 12px 10px;
   margin-bottom: 30px;
 
   transition:
     color 0.25s ease,
     transform 0.25s ease;
 }
-
 
 .link::after {
   content: "";
@@ -166,25 +135,17 @@ body::before {
   width: 0;
   height: 2px;
 
-  background-color:
-    rgb(62, 80, 133);
+  background-color: rgb(62, 80, 133);
 
-  transform:
-    translateX(-50%);
+  transform: translateX(-50%);
 
-  transition:
-    width 0.3s ease;
+  transition: width 0.3s ease;
 }
-
 
 .link:hover {
-  color:
-    rgb(62, 80, 133);
-
-  transform:
-    translateY(-2px);
+  color: rgb(62, 80, 133);
+  transform: translateY(-2px);
 }
-
 
 .link:hover::after {
   width: 100%;
@@ -201,27 +162,21 @@ body::before {
       1fr;
   }
 
-
   .logo-container {
     width: 180px;
     height: 120px;
   }
 
-
   .logo {
     width: 145px;
   }
 
-
   .link {
     font-size: 1.1rem;
 
-    padding:
-      10px 6px;
-
+    padding: 10px 6px;
     margin-bottom: 20px;
   }
-
 }
 
 @media (max-width: 650px) {
@@ -235,43 +190,32 @@ body::before {
       1fr;
   }
 
-
   .nav-left,
   .nav-right {
     gap: 0;
-
-    justify-content:
-      space-around;
+    justify-content: space-around;
   }
-
 
   .logo-container {
     width: 110px;
-
     height: 95px;
 
-    border-radius:
-      0 0 14px 14px;
+    border-radius: 0 0 14px 14px;
 
     box-shadow:
       0 4px 12px rgba(0, 0, 0, 0.14);
   }
 
-
   .logo {
     width: 90px;
   }
 
-
   .link {
     font-size: 0.85rem;
 
-    padding:
-      8px 4px;
-
+    padding: 8px 4px;
     margin-bottom: 10px;
   }
-
 
   .logo-link:hover .logo-container {
     transform: none;
@@ -280,12 +224,11 @@ body::before {
       0 4px 12px rgba(0, 0, 0, 0.14);
   }
 
-
   .logo-link:hover .logo {
     transform: none;
   }
-
 }
+
 
 @media (max-width: 400px) {
 
@@ -298,27 +241,21 @@ body::before {
       1fr;
   }
 
-
   .logo-container {
     width: 90px;
     height: 80px;
   }
 
-
   .logo {
     width: 75px;
   }
 
-
   .link {
     font-size: 0.72rem;
 
-    padding:
-      6px 2px;
+    padding: 6px 2px;
   }
-
 }
-
 
 
 
@@ -1480,7 +1417,7 @@ body {
 
   text-align: center;
 
-  color: rgba(0, 0, 0, 0.98);
+  color: rgba(255, 255, 255, 0.98);
 
   background-color:
     rgba(158, 0, 0, 0.8);

@@ -2128,265 +2128,447 @@ padding: 50px;
     margin: 20px auto;
   }
 
-
 /* =========================================
-   FINAL HEADER / NAV FIX
-   Put this at the VERY END of style.css
-   ========================================= */
+FINAL HEADER / PRICING PAGE FIX
+Put this at the VERY END of your CSS.
+========================================= */
 
-/* Keep the page itself below the header */
+/* Keep the page from creating unwanted horizontal overflow */
 html,
 body {
-  position: relative;
-  width: 100%;
-  min-height: 100%;
-  margin: 0;
-  overflow-x: hidden;
+width: 100%;
+max-width: 100%;
+overflow-x: hidden;
 }
 
-
 /* =========================================
-   FIXED HEADER
-   ========================================= */
+HEADER
+========================================= */
 
 .head {
-  position: fixed !important;
+position: fixed !important;
 
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
+top: 0 !important;
+left: 0 !important;
+right: 0 !important;
 
-  width: 100% !important;
-  height: 105px !important;
-  min-height: 105px !important;
+width: 100% !important;
+height: 105px !important;
+min-height: 105px !important;
 
-  display: grid !important;
-  grid-template-columns: 1fr minmax(150px, 250px) 1fr !important;
-  align-items: center !important;
+display: grid !important;
+grid-template-columns: minmax(0, 1fr) minmax(150px, 250px) minmax(0, 1fr) !important;
 
-  margin: 0 !important;
-  padding: 0 !important;
+margin: 0 !important;
+padding: 0 !important;
 
-  z-index: 999999 !important;
+background: rgba(255, 255, 255, 0.95);
 
-  background: rgba(255, 255, 255, 0.95) !important;
+backdrop-filter: blur(10px);
+-webkit-backdrop-filter: blur(10px);
 
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+border-bottom: 1px solid rgba(62, 80, 133, 0.2);
 
-  isolation: isolate;
+box-shadow: 0 4px 18px rgba(0, 0, 0, 0.10);
 
-  transform: translateZ(0);
-  -webkit-transform: translateZ(0);
+/*
+Keep the header above ALL normal page content.
+*/
+z-index: 2147483647 !important;
+
+/*
+Create a reliable stacking context.
+*/
+isolation: isolate;
+
+transform: translateZ(0);
+-webkit-transform: translateZ(0);
 }
-
 
 /* =========================================
-   MAKE NAVIGATION CLICKABLE
-   ========================================= */
+HEADER NAVIGATION
+========================================= */
 
-.head .nav-left,
-.head .nav-right {
-  position: relative;
+.nav-left,
+.nav-right {
+position: relative;
 
-  z-index: 1000001;
+z-index: 2;
 
-  pointer-events: auto;
+height: 100%;
+
+display: flex;
+align-items: center;
+justify-content: space-evenly;
+
+gap: 10px;
+
+min-width: 0;
 }
 
+/* Make the actual links explicitly clickable */
 .head .link {
-  position: relative;
+position: relative;
 
-  z-index: 1000002;
+z-index: 10;
 
-  pointer-events: auto;
+display: inline-block;
 
-  cursor: pointer;
+color: #333;
+text-decoration: none;
 
-  display: inline-block;
+cursor: pointer;
+
+pointer-events: auto;
+
+font-family: "Noto Sans", sans-serif;
+
+font-size: clamp(1.1rem, 2.5vw, 2.5rem);
+font-weight: 300;
+
+padding: 12px 10px;
+margin-bottom: 30px;
+
+transition:
+color 0.25s ease,
+transform 0.25s ease;
 }
+
+.head .link::after {
+content: "";
+
+position: absolute;
+
+left: 50%;
+bottom: 2px;
+
+width: 0;
+height: 2px;
+
+background-color: rgb(62, 80, 133);
+
+transform: translateX(-50%);
+
+transition: width 0.3s ease;
+
+pointer-events: none;
+}
+
+.head .link:hover {
+color: rgb(62, 80, 133);
+
+transform: translateY(-2px);
+}
+
+.head .link:hover::after {
+width: 100%;
+}
+
+/* =========================================
+LOGO
+========================================= */
 
 .head .logo-link {
-  position: relative;
+position: relative;
 
-  z-index: 1000003;
+z-index: 20;
 
-  pointer-events: auto;
+display: flex;
 
-  cursor: pointer;
+justify-content: center;
+align-items: flex-start;
+
+width: 100%;
+height: 100%;
+
+text-decoration: none;
+
+cursor: pointer;
+
+pointer-events: auto;
 }
 
+.head .logo-container {
+position: relative;
 
-/* =========================================
-   PAGE TRANSITION MUST NOT BLOCK HEADER
-   ========================================= */
+z-index: 20;
 
-#pageTransition {
-  pointer-events: none !important;
+width: min(250px, 80vw);
+height: 145px;
 
-  z-index: 9990 !important;
+display: flex;
+
+justify-content: center;
+align-items: flex-start;
+
+background: white;
+
+border-radius: 0 0 20px 20px;
+
+box-shadow: 0 6px 18px rgba(0, 0, 0, 0.16);
 }
 
+.head .logo {
+position: relative;
 
-/* =========================================
-   KEEP PAGE CONTENT BELOW HEADER
-   ========================================= */
+z-index: 21;
 
-main,
-.pricing-page,
-.fullheader,
-.otherbody,
-.pricinglist,
-.calculator-section {
-  position: relative;
+width: min(200px, 75%);
+height: auto;
 
-  z-index: 1;
+display: block;
+
+pointer-events: none;
 }
 
-
 /* =========================================
-   PREVENT CONTENT FROM CREATING A LAYER
-   ABOVE HEADER
-   ========================================= */
+PRICING PAGE
+========================================= */
 
-.pricing-page *,
-.fullheader *,
-.otherbody *,
-.pricinglist *,
-.calculator-section * {
-  max-width: 100%;
-}
+/*
+The header is 105px tall.
 
-
-/* =========================================
-   PRICING PAGE TOP SPACING
-   ========================================= */
+Give the pricing page MORE than 105px of top
+space so its content cannot sit underneath it.
+*/
 
 .pricing-page {
-  padding-top: 140px !important;
+position: relative;
+
+z-index: 1;
+
+width: 100%;
+max-width: 1200px;
+
+margin: 0 auto;
+
+padding:
+145px
+30px
+200px;
+
+text-align: center;
+
+box-sizing: border-box;
 }
 
+/*
+Keep pricing content below the header.
+*/
+
+.pricinglist,
+.calculator-section {
+position: relative;
+
+z-index: 1;
+}
 
 /* =========================================
-   TABLET
-   ========================================= */
+PAGE TRANSITION
+========================================= */
+
+/*
+The transition layer must NEVER block header
+interaction.
+
+This is especially important if JavaScript
+changes its opacity/visibility.
+*/
+
+#pageTransition {
+position: fixed;
+
+inset: 0;
+
+z-index: 2147483000;
+
+pointer-events: none !important;
+}
+
+/* =========================================
+MOBILE
+========================================= */
 
 @media (max-width: 900px) {
 
-  .head {
-    height: 90px !important;
-    min-height: 90px !important;
+.head {
+height: 90px !important;
+min-height: 90px !important;
 
-    grid-template-columns:
-      1fr
-      minmax(120px, 180px)
-      1fr !important;
-  }
 
-  .pricing-page {
-    padding-top: 120px !important;
-  }
+grid-template-columns:
+  minmax(0, 1fr)
+  minmax(120px, 180px)
+  minmax(0, 1fr) !important;
 
-  .logo-container {
-    width: 180px;
-    height: 120px;
-  }
 
-  .logo {
-    width: 145px;
-  }
 }
 
+.head .logo-container {
+width: 180px;
+height: 120px;
+}
 
-/* =========================================
-   PHONE
-   ========================================= */
+.head .logo {
+width: 145px;
+}
+
+.head .link {
+font-size: 1.1rem;
+padding: 10px 6px;
+margin-bottom: 20px;
+}
+
+.pricing-page {
+padding-top: 125px;
+padding-left: 25px;
+padding-right: 25px;
+}
+}
+
+@media (max-width: 768px) {
+
+.head {
+height: 75px !important;
+min-height: 75px !important;
+
+
+grid-template-columns:
+  minmax(0, 1fr)
+  100px
+  minmax(0, 1fr) !important;
+
+}
+
+.nav-left,
+.nav-right {
+gap: 5px;
+
+
+justify-content: space-around;
+
+
+}
+
+.head .link {
+font-size: 15px;
+
+padding: 8px 4px;
+
+margin-bottom: 0;
+
+white-space: nowrap;
+
+
+}
+
+.head .link::after {
+bottom: 0;
+}
+
+.head .logo-container {
+width: 100px;
+height: 85px;
+
+
+border-radius: 0 0 12px 12px;
+
+
+}
+
+.head .logo {
+width: 85px;
+}
+
+.pricing-page {
+padding:
+100px
+15px
+100px;
+}
+}
 
 @media (max-width: 650px) {
 
-  .head {
-    height: 75px !important;
-    min-height: 75px !important;
+.head {
+height: 75px !important;
+min-height: 75px !important;
 
-    grid-template-columns:
-      minmax(0, 1fr)
-      110px
-      minmax(0, 1fr) !important;
-  }
 
-  .nav-left,
-  .nav-right {
-    position: relative;
+grid-template-columns:
+  minmax(0, 1fr)
+  100px
+  minmax(0, 1fr) !important;
 
-    z-index: 1000001;
 
-    gap: 0;
-
-    justify-content: space-around;
-  }
-
-  .head .link {
-    font-size: 0.85rem;
-
-    padding: 8px 4px;
-
-    margin-bottom: 0;
-
-    white-space: nowrap;
-
-    z-index: 1000002;
-  }
-
-  .logo-container {
-    width: 110px;
-    height: 95px;
-
-    border-radius: 0 0 14px 14px;
-  }
-
-  .logo {
-    width: 90px;
-  }
-
-  .pricing-page {
-    padding-top: 100px !important;
-    padding-left: 15px !important;
-    padding-right: 15px !important;
-  }
 }
 
+.head .link {
+font-size: 0.85rem;
 
-/* =========================================
-   VERY SMALL PHONES
-   ========================================= */
+
+padding: 8px 4px;
+
+margin-bottom: 0;
+
+
+}
+
+.head .logo-container {
+width: 100px;
+height: 85px;
+}
+
+.head .logo {
+width: 85px;
+}
+
+.pricing-page {
+padding:
+100px
+15px
+100px;
+}
+}
 
 @media (max-width: 400px) {
 
-  .head {
-    height: 65px !important;
-    min-height: 65px !important;
+.head {
+height: 65px !important;
+min-height: 65px !important;
 
-    grid-template-columns:
-      minmax(0, 1fr)
-      90px
-      minmax(0, 1fr) !important;
-  }
 
-  .head .link {
-    font-size: 0.72rem;
-    padding: 6px 2px;
-  }
+grid-template-columns:
+  minmax(0, 1fr)
+  90px
+  minmax(0, 1fr) !important;
 
-  .logo-container {
-    width: 90px;
-    height: 80px;
-  }
 
-  .logo {
-    width: 75px;
-  }
-
-  .pricing-page {
-    padding-top: 85px !important;
-  }
 }
+
+.head .link {
+font-size: 0.72rem;
+
+
+padding: 6px 2px;
+
+
+}
+
+.head .logo-container {
+width: 90px;
+height: 80px;
+}
+
+.head .logo {
+width: 75px;
+}
+
+.pricing-page {
+padding:
+85px
+10px
+80px;
+}
+}
+

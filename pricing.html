@@ -1,213 +1,379 @@
+
 <!DOCTYPE html>
+<html lang="en">
 
-<html Lang="en">
-  <head>
-<meta name="viewport" content="width=device-width, initial-scale=.5">
+<head>
+  <meta charset="UTF-8">
 
-    <title>
-      Exactly! Load Calculations - Pricing
-    </title>
-    <link rel="stylesheet" href="style.css">
-  </head>
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
 
-  <style>  
-    main {
-  padding-top: 125px;
-  padding-bottom: 500px;
-}
+  <title>Exactly! Load Calculations - Pricing</title>
 
-body {
-  overflow-x: hidden;
-}
-  </style>
+  <link rel="stylesheet" href="style.css">
+</head>
 
 <body>
+
+  <!-- Animated background -->
+  <canvas id="spiralCanvas" aria-hidden="true"></canvas>
+
   <div id="pageTransition"></div>
-<main>
-<div class="head">
 
-  <div class="nav-left">
-    <a class="link" href="index.html">Home</a>
-    <a class="link" href="aboutexactly.html">About Exactly</a>
-  </div>
+  <!-- Navigation -->
+  <header class="head">
 
-  <a href="index.html" class="logo-link">
-    <div class="logo-container">
-      <img class="logo" src="Photos/logofull.PNG">
+    <div class="nav-left">
+      <a class="link" href="index.html">Home</a>
+      <a class="link" href="aboutexactly.html">About Exactly</a>
     </div>
-  </a>
 
-  <div class="nav-right">
-    <a class="link" href="pricing.html">Pricing</a>
-    <a class="link" href="contact.html">Contact</a>
-  </div>
+    <a href="index.html" class="logo-link">
+      <div class="logo-container">
+        <img
+          class="logo"
+          src="Photos/logofull.PNG"
+          alt="Exactly! Load Calculations"
+        >
+      </div>
+    </a>
 
-</div>
+    <div class="nav-right">
+      <a class="link" href="pricing.html">Pricing</a>
+      <a class="link" href="contact.html">Contact</a>
+    </div>
 
-
-<div>
-  <p class="priceplan">
-</div>
-
-
-<div class="pricinglist">
-
-<p style="font-style:italic; align-self: center; background-color: rgba(62, 80, 133, 1);" class="pricinglisttext">Manual J (+ Manual S) Service</p>
-<p style="font-size:60px" class="pricinglisttext">$0.13 Per Sq. Ft.</p>
-<p style="font-size:50px" class="pricinglisttext">72 Hour Turnaround Time</p>
-<p class="pricinglisttext">One Free Revision</p>
-
-</div>
+  </header>
 
 
-<p class="calctext">Get an idea of the cost for your project below!</p>
-<div class="calculate">
+  <main class="pricing-page">
 
-    <input type="number" style="width:300p; height:100px; font-size:40px"; id="numberInput" placeholder="Enter house size in sq. ft.">
-    <button onclick="calculate()">Calculate</button>
+    <!-- Pricing information -->
+    <section class="pricinglist">
 
-    <p>$<span id="result">0.00</span></p>
+      <p
+        class="pricinglisttext pricing-service"
+      >
+        Manual J (+ Manual S) Service
+      </p>
 
-    <script>
-        function calculate() {
-            const number = parseFloat(document.getElementById("numberInput").value);
+      <p class="pricinglisttext pricing-cost">
+        $0.13 Per Sq. Ft.
+      </p>
 
-            const result = Math.round(number * 0.13 * 100) / 100;
+      <p class="pricinglisttext pricing-time">
+        72 Hour Turnaround Time
+      </p>
 
-            document.getElementById("result").textContent = result.toFixed(2);
-        }
-    </script>
+      <p class="pricinglisttext pricing-revision">
+        One Free Revision
+      </p>
 
-</div>
-
-  </body>
-
-
-
-</html>
-
-      </main>
+    </section>
 
 
- <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    <!-- Calculator -->
+    <section class="calculator-section">
 
-    body {
-      min-height: 100vh;
-      overflow-x: hidden;
-      background: rgba(0,0,0,0);
-      color: white;
-      font-family: Arial, sans-serif;
-    }
+      <p class="calctext">
+        Get an idea of the cost for your project below!
+      </p>
 
-    /* The canvas sits behind everything */
-    #spiralCanvas {
-      position: fixed;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      z-index: -1;
-    }
+      <div class="calculate">
 
-    .content {
-      position: relative;
-      z-index: 1;
-      min-height: 100vh;
+        <label for="numberInput">
+          House size in square feet
+        </label>
 
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-    }
+        <div class="calculator-input">
 
-    .content h1 {
-      font-size: clamp(3rem, 8vw, 7rem);
-      letter-spacing: -0.05em;
+          <input
+            type="number"
+            id="numberInput"
+            placeholder="Enter house size"
+            min="0"
+            step="1"
+            inputmode="numeric"
+          >
 
-      text-shadow:
-        0 0 20px rgba(62, 80, 133, 0.8),
-        0 0 60px rgba(158, 0, 0, 0.4);
-    }
-  </style>
+          <button type="button" onclick="calculate()">
+            Calculate
+          </button>
 
+        </div>
 
+        <p class="calculator-result">
+          $<span id="result">0.00</span>
+        </p>
 
+      </div>
 
+    </section>
 
-        <canvas id="spiralCanvas"></canvas>
+  </main>
+
 
   <script>
-    const canvas = document.getElementById("spiralCanvas");
-    const ctx = canvas.getContext("2d");
+
+    function calculate() {
+
+      const input =
+        document.getElementById("numberInput");
+
+      const result =
+        document.getElementById("result");
+
+      const number =
+        parseFloat(input.value);
+
+
+      /*
+        If the user hasn't entered a valid
+        number, show $0.00.
+      */
+      if (isNaN(number) || number < 0) {
+        result.textContent = "0.00";
+        return;
+      }
+
+
+      const calculatedCost =
+        Math.round(number * 0.13 * 100) / 100;
+
+
+      result.textContent =
+        calculatedCost.toFixed(2);
+    }
+
+  </script>
+
+
+  <!-- Spiral background -->
+  <script>
+
+    const canvas =
+      document.getElementById("spiralCanvas");
+
+    const ctx =
+      canvas.getContext("2d", {
+        alpha: true
+      });
+
 
     let width;
     let height;
     let centerX;
     let centerY;
-
     let rotation = 0;
 
+
+    /*
+      Device categories
+    */
+    const mobileQuery =
+      window.matchMedia("(max-width: 650px)");
+
+    const tabletQuery =
+      window.matchMedia("(max-width: 900px)");
+
+    const reduceMotionQuery =
+      window.matchMedia(
+        "(prefers-reduced-motion: reduce)"
+      );
+
+
+    function isMobile() {
+      return mobileQuery.matches;
+    }
+
+
+    function isTablet() {
+      return tabletQuery.matches &&
+             !mobileQuery.matches;
+    }
+
+
     function resize() {
-      const dpr = window.devicePixelRatio || 1;
 
       width = window.innerWidth;
       height = window.innerHeight;
 
-      canvas.width = width * dpr;
-      canvas.height = height * dpr;
-
-      canvas.style.width = width + "px";
-      canvas.style.height = height + "px";
-
-      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-
       centerX = width / 2;
       centerY = height / 2;
+
+
+      const deviceDPR =
+        window.devicePixelRatio || 1;
+
+
+      /*
+        Don't render unnecessary pixels.
+
+        Desktop: max 2x
+        Tablet:  max 1.5x
+        Phone:   max 1.25x
+      */
+      let dpr;
+
+      if (isMobile()) {
+        dpr = Math.min(deviceDPR, 1.25);
+      } else if (isTablet()) {
+        dpr = Math.min(deviceDPR, 1.5);
+      } else {
+        dpr = Math.min(deviceDPR, 2);
+      }
+
+
+      canvas.width =
+        Math.floor(width * dpr);
+
+      canvas.height =
+        Math.floor(height * dpr);
+
+      canvas.style.width =
+        width + "px";
+
+      canvas.style.height =
+        height + "px";
+
+
+      ctx.setTransform(
+        dpr,
+        0,
+        0,
+        dpr,
+        0,
+        0
+      );
     }
 
-    window.addEventListener("resize", resize);
+
+    window.addEventListener(
+      "resize",
+      resize
+    );
+
+
     resize();
 
 
     function drawSpiral() {
 
-      // Dark background
-      ctx.fillStyle = "rgba:(0,0,0,0)";
-      ctx.fillRect(0, 0, width, height);
+      /*
+        Completely clear the previous frame.
+      */
+      ctx.clearRect(
+        0,
+        0,
+        width,
+        height
+      );
+
 
       ctx.save();
 
-      ctx.translate(centerX, centerY);
+      ctx.translate(
+        centerX,
+        centerY
+      );
+
       ctx.rotate(rotation);
 
+
       /*
-        Draw several spirals on top of each other.
-        This gives the effect more depth.
+        Reduce the amount of work
+        depending on the device.
       */
-      for (let layer = 0; layer < 3; layer++) {
+      let layers;
+      let points;
+      let radiusMultiplier;
+      let lineWidth;
+
+
+      if (isMobile()) {
+
+        /*
+          Phones:
+          Very lightweight version.
+        */
+        layers = 1;
+        points = 250;
+        radiusMultiplier = 0.7;
+        lineWidth = 28;
+
+      } else if (isTablet()) {
+
+        /*
+          Tablets:
+          Medium version.
+        */
+        layers = 2;
+        points = 500;
+        radiusMultiplier = 0.8;
+        lineWidth = 42;
+
+      } else {
+
+        /*
+          Desktop:
+          Full effect.
+        */
+        layers = 3;
+        points = 900;
+        radiusMultiplier = 0.9;
+        lineWidth = 60;
+      }
+
+
+      const maxRadius =
+        Math.max(width, height) *
+        radiusMultiplier;
+
+
+      const colors = [
+        "rgba(62, 80, 133, 0.38)",
+        "rgba(158, 0, 0, 0.28)",
+        "rgba(255, 255, 255, 0.32)"
+      ];
+
+
+      for (
+        let layer = 0;
+        layer < layers;
+        layer++
+      ) {
 
         ctx.beginPath();
 
-        const maxRadius = Math.max(width, height) * 0.9;
 
-        for (let i = 0; i < 900; i++) {
+        for (
+          let i = 0;
+          i < points;
+          i++
+        ) {
 
-          const t = i / 900;
+          const t =
+            i / points;
 
-          // Radius grows outward
-          const radius = t * maxRadius;
 
-          // Number of turns
+          const radius =
+            t * maxRadius;
+
+
           const angle =
             t * Math.PI * 18 +
             layer * Math.PI * 2 / 3;
 
-          const x = Math.cos(angle) * radius;
-          const y = Math.sin(angle) * radius;
+
+          const x =
+            Math.cos(angle) * radius;
+
+
+          const y =
+            Math.sin(angle) * radius;
+
 
           if (i === 0) {
             ctx.moveTo(x, y);
@@ -216,29 +382,162 @@ body {
           }
         }
 
-        // Glowing colors
+
+        ctx.strokeStyle =
+          colors[layer];
+
+
+        ctx.lineWidth =
+          lineWidth;
+
+
+        /*
+          Don't use canvas shadows.
+          They are expensive on mobile.
+        */
+        ctx.shadowBlur = 0;
+
+
+        ctx.stroke();
+      }
+
+
+      ctx.restore();
+
+
+      /*
+        Slower animation on mobile.
+      */
+      if (isMobile()) {
+
+        rotation += 0.004;
+
+      } else if (isTablet()) {
+
+        rotation += 0.007;
+
+      } else {
+
+        rotation += 0.0118;
+      }
+
+
+      requestAnimationFrame(
+        drawSpiral
+      );
+    }
+
+
+    /*
+      Respect the user's accessibility
+      preference for reduced motion.
+    */
+    if (
+      !reduceMotionQuery.matches
+    ) {
+
+      drawSpiral();
+
+    } else {
+
+      /*
+        Draw one static frame instead
+        of continuously animating.
+      */
+      drawSpiral = function () {
+
+        ctx.clearRect(
+          0,
+          0,
+          width,
+          height
+        );
+
+        ctx.save();
+
+        ctx.translate(
+          centerX,
+          centerY
+        );
+
+
+        const points =
+          isMobile() ? 250 : 900;
+
+        const layers =
+          isMobile() ? 1 : 3;
+
+        const maxRadius =
+          Math.max(width, height) *
+          (isMobile() ? 0.7 : 0.9);
+
+
         const colors = [
           "rgba(62, 80, 133, 0.38)",
           "rgba(158, 0, 0, 0.28)",
           "rgba(255, 255, 255, 0.32)"
         ];
 
-        ctx.strokeStyle = colors[layer];
-        ctx.lineWidth = 60 + layer;
 
-        ctx.shadowBlur = 0;
-        ctx.shadowColor = colors[layer];
+        for (
+          let layer = 0;
+          layer < layers;
+          layer++
+        ) {
 
-        ctx.stroke();
-      }
+          ctx.beginPath();
 
-      ctx.restore();
 
-      // Slowly rotate the entire spiral
-      rotation += 0.0118;
+          for (
+            let i = 0;
+            i < points;
+            i++
+          ) {
 
-      requestAnimationFrame(drawSpiral);
+            const t =
+              i / points;
+
+            const radius =
+              t * maxRadius;
+
+            const angle =
+              t * Math.PI * 18 +
+              layer * Math.PI * 2 / 3;
+
+            const x =
+              Math.cos(angle) * radius;
+
+            const y =
+              Math.sin(angle) * radius;
+
+
+            if (i === 0) {
+              ctx.moveTo(x, y);
+            } else {
+              ctx.lineTo(x, y);
+            }
+          }
+
+
+          ctx.strokeStyle =
+            colors[layer];
+
+          ctx.lineWidth =
+            isMobile() ? 28 : 60;
+
+          ctx.stroke();
+        }
+
+
+        ctx.restore();
+      };
+
+
+      drawSpiral();
     }
 
-    drawSpiral();
   </script>
+
+</body>
+</html>
+```

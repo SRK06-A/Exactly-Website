@@ -1237,15 +1237,6 @@ body {
 }
 
 
-
-.head,
-.pricing-page,
-#pageTransition {
-  position: relative;
-  z-index: 1;
-}
-
-
 .pricing-page {
   width: 100%;
   max-width: 1200px;
@@ -2136,3 +2127,26 @@ padding: 50px;
     max-width: 250px;
     margin: 20px auto;
   }
+
+.pricing-page {
+  position: relative;
+  z-index: 1;
+}
+
+.head {
+  position: fixed !important;
+  top: 0;
+  left: 0;
+  right: 0;
+
+  z-index: 99999 !important;
+}
+
+#pageTransition {
+  position: fixed;
+  inset: 0;
+
+  z-index: 99990;
+
+  pointer-events: none;
+}

@@ -1,35 +1,21 @@
 
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: -1;
-
-  background:
-    linear-gradient(
-      to right,
-      rgba(158, 0, 0, .4),
-      transparent 50%,
-      transparent 50%,
-      rgba(62, 80, 133, .4)
-    );
-}
 
 .head {
-  position: fixed;
-
+  position: fixed !important;
   top: 0;
   left: 0;
   right: 0;
 
   width: 100%;
   min-height: 105px;
-  height: auto;
+  height: 105px;
 
   display: grid;
   grid-template-columns: 1fr minmax(150px, 250px) 1fr;
   align-items: center;
+
+  margin: 0;
+  padding: 0;
 
   background: rgba(255, 255, 255, 0.95);
 
@@ -40,7 +26,12 @@ body::before {
 
   box-shadow: 0 4px 18px rgba(0, 0, 0, 0.10);
 
-  z-index: 1000;
+  z-index: 99999;
+
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+
+  isolation: isolate;
 }
 
 .nav-left,
@@ -52,20 +43,22 @@ body::before {
   justify-content: space-evenly;
 
   gap: 10px;
+
+  min-width: 0;
 }
 
 .logo-link {
   display: flex;
-
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
 
+  width: 100%;
   height: 100%;
 
   text-decoration: none;
 
   position: relative;
-  z-index: 5;
+  z-index: 100000;
 }
 
 .logo-container {
@@ -151,10 +144,18 @@ body::before {
   width: 100%;
 }
 
+main,
+.fullheader,
+.otherbody,
+.pricing-page {
+  position: relative;
+}
+
 @media (max-width: 900px) {
 
   .head {
     min-height: 90px;
+    height: 90px;
 
     grid-template-columns:
       1fr
@@ -173,21 +174,22 @@ body::before {
 
   .link {
     font-size: 1.1rem;
-
     padding: 10px 6px;
     margin-bottom: 20px;
   }
 }
 
+
 @media (max-width: 650px) {
 
   .head {
     min-height: 75px;
+    height: 75px;
 
     grid-template-columns:
-      1fr
+      minmax(0, 1fr)
       110px
-      1fr;
+      minmax(0, 1fr);
   }
 
   .nav-left,
@@ -214,7 +216,9 @@ body::before {
     font-size: 0.85rem;
 
     padding: 8px 4px;
-    margin-bottom: 10px;
+    margin-bottom: 0;
+
+    white-space: nowrap;
   }
 
   .logo-link:hover .logo-container {
@@ -234,11 +238,12 @@ body::before {
 
   .head {
     min-height: 65px;
+    height: 65px;
 
     grid-template-columns:
-      1fr
+      minmax(0, 1fr)
       90px
-      1fr;
+      minmax(0, 1fr);
   }
 
   .logo-container {
@@ -252,7 +257,6 @@ body::before {
 
   .link {
     font-size: 0.72rem;
-
     padding: 6px 2px;
   }
 }
@@ -1848,7 +1852,6 @@ body {
   }
 
 }
-```
 
 
  /* below this is for the contact page*/
@@ -1995,8 +1998,6 @@ padding: 50px;
 
 @media (max-width: 768px) {
 
-  /* Prevent the desktop min-width from forcing
-     the phone to be 500px wide */
   body {
     min-width: 0;
     width: 100%;

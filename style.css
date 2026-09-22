@@ -2128,25 +2128,265 @@ padding: 50px;
     margin: 20px auto;
   }
 
-.pricing-page {
+
+/* =========================================
+   FINAL HEADER / NAV FIX
+   Put this at the VERY END of style.css
+   ========================================= */
+
+/* Keep the page itself below the header */
+html,
+body {
   position: relative;
-  z-index: 1;
+  width: 100%;
+  min-height: 100%;
+  margin: 0;
+  overflow-x: hidden;
 }
+
+
+/* =========================================
+   FIXED HEADER
+   ========================================= */
 
 .head {
   position: fixed !important;
-  top: 0;
-  left: 0;
-  right: 0;
 
-  z-index: 99999 !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+
+  width: 100% !important;
+  height: 105px !important;
+  min-height: 105px !important;
+
+  display: grid !important;
+  grid-template-columns: 1fr minmax(150px, 250px) 1fr !important;
+  align-items: center !important;
+
+  margin: 0 !important;
+  padding: 0 !important;
+
+  z-index: 999999 !important;
+
+  background: rgba(255, 255, 255, 0.95) !important;
+
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+
+  isolation: isolate;
+
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
 }
 
+
+/* =========================================
+   MAKE NAVIGATION CLICKABLE
+   ========================================= */
+
+.head .nav-left,
+.head .nav-right {
+  position: relative;
+
+  z-index: 1000001;
+
+  pointer-events: auto;
+}
+
+.head .link {
+  position: relative;
+
+  z-index: 1000002;
+
+  pointer-events: auto;
+
+  cursor: pointer;
+
+  display: inline-block;
+}
+
+.head .logo-link {
+  position: relative;
+
+  z-index: 1000003;
+
+  pointer-events: auto;
+
+  cursor: pointer;
+}
+
+
+/* =========================================
+   PAGE TRANSITION MUST NOT BLOCK HEADER
+   ========================================= */
+
 #pageTransition {
-  position: fixed;
-  inset: 0;
+  pointer-events: none !important;
 
-  z-index: 99990;
+  z-index: 9990 !important;
+}
 
-  pointer-events: none;
+
+/* =========================================
+   KEEP PAGE CONTENT BELOW HEADER
+   ========================================= */
+
+main,
+.pricing-page,
+.fullheader,
+.otherbody,
+.pricinglist,
+.calculator-section {
+  position: relative;
+
+  z-index: 1;
+}
+
+
+/* =========================================
+   PREVENT CONTENT FROM CREATING A LAYER
+   ABOVE HEADER
+   ========================================= */
+
+.pricing-page *,
+.fullheader *,
+.otherbody *,
+.pricinglist *,
+.calculator-section * {
+  max-width: 100%;
+}
+
+
+/* =========================================
+   PRICING PAGE TOP SPACING
+   ========================================= */
+
+.pricing-page {
+  padding-top: 140px !important;
+}
+
+
+/* =========================================
+   TABLET
+   ========================================= */
+
+@media (max-width: 900px) {
+
+  .head {
+    height: 90px !important;
+    min-height: 90px !important;
+
+    grid-template-columns:
+      1fr
+      minmax(120px, 180px)
+      1fr !important;
+  }
+
+  .pricing-page {
+    padding-top: 120px !important;
+  }
+
+  .logo-container {
+    width: 180px;
+    height: 120px;
+  }
+
+  .logo {
+    width: 145px;
+  }
+}
+
+
+/* =========================================
+   PHONE
+   ========================================= */
+
+@media (max-width: 650px) {
+
+  .head {
+    height: 75px !important;
+    min-height: 75px !important;
+
+    grid-template-columns:
+      minmax(0, 1fr)
+      110px
+      minmax(0, 1fr) !important;
+  }
+
+  .nav-left,
+  .nav-right {
+    position: relative;
+
+    z-index: 1000001;
+
+    gap: 0;
+
+    justify-content: space-around;
+  }
+
+  .head .link {
+    font-size: 0.85rem;
+
+    padding: 8px 4px;
+
+    margin-bottom: 0;
+
+    white-space: nowrap;
+
+    z-index: 1000002;
+  }
+
+  .logo-container {
+    width: 110px;
+    height: 95px;
+
+    border-radius: 0 0 14px 14px;
+  }
+
+  .logo {
+    width: 90px;
+  }
+
+  .pricing-page {
+    padding-top: 100px !important;
+    padding-left: 15px !important;
+    padding-right: 15px !important;
+  }
+}
+
+
+/* =========================================
+   VERY SMALL PHONES
+   ========================================= */
+
+@media (max-width: 400px) {
+
+  .head {
+    height: 65px !important;
+    min-height: 65px !important;
+
+    grid-template-columns:
+      minmax(0, 1fr)
+      90px
+      minmax(0, 1fr) !important;
+  }
+
+  .head .link {
+    font-size: 0.72rem;
+    padding: 6px 2px;
+  }
+
+  .logo-container {
+    width: 90px;
+    height: 80px;
+  }
+
+  .logo {
+    width: 75px;
+  }
+
+  .pricing-page {
+    padding-top: 85px !important;
+  }
 }

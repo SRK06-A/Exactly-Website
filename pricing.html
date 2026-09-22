@@ -1,28 +1,16 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
-  >
-
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Exactly! Load Calculations - Pricing</title>
-
   <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-  <!-- Animated background -->
-  <canvas id="spiralCanvas" aria-hidden="true"></canvas>
-
   <div id="pageTransition"></div>
 
-  <!-- Navigation -->
   <header class="head">
 
     <div class="nav-left">
@@ -46,12 +34,9 @@
 
   <main class="pricing-page">
 
-    <!-- Pricing information -->
-    <section class="pricinglist">
+    <div class="pricinglist">
 
-      <p
-        class="pricinglisttext pricing-service"
-      >
+      <p class="pricinglisttext pricing-service">
         Manual J (+ Manual S) Service
       </p>
 
@@ -67,10 +52,9 @@
         One Free Revision
       </p>
 
-    </section>
+    </div>
 
 
-    <!-- Calculator -->
     <section class="calculator-section">
 
       <p class="calctext">
@@ -79,22 +63,15 @@
 
       <div class="calculate">
 
-        <label for="numberInput">
-          House size in square feet
-        </label>
-
         <div class="calculator-input">
 
           <input
             type="number"
             id="numberInput"
-            placeholder="Enter house size"
-            min="0"
-            step="1"
-            inputmode="numeric"
+            placeholder="Enter house size in sq. ft."
           >
 
-          <button type="button" onclick="calculate()">
+          <button onclick="calculate()">
             Calculate
           </button>
 
@@ -109,6 +86,13 @@
     </section>
 
   </main>
+
+
+  <canvas id="spiralCanvas"></canvas>
+
+</body>
+
+</html>
 
 
   <script>
